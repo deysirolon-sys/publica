@@ -1,0 +1,1621 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Escritura Académica y Científica | I.E. Julio Pérez Ferrero</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    /* ── Paleta Institucional I.E. Julio Pérez Ferrero ── */
+    --navy:       #1a3a1a;
+    --deep:       #0f2410;
+    --ink:        #1a3a1a;
+    --slate:      #2e6b2e;
+    --steel:      #5a9e5a;
+    --sky:        #90c490;
+    --mist:       #f5e9c0;
+    --cream:      #f0ede4;
+    --parchment:  #e2ddd0;
+    --gold:       #c8960c;
+    --amber:      #e8b84b;
+    --sage:       #2e6b2e;
+    --terracotta: #9a6e00;
+    --white:      #f7f5f0;
+    --text-dark:  #1c1c1c;
+    --text-mid:   #3a3a2e;
+    --text-light: #6e6a5a;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    background: var(--white);
+    color: var(--text-dark);
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+    background: rgba(15, 36, 16, 0.97);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(200, 150, 12, 0.3);
+    padding: 0 2rem;
+  }
+  .nav-inner {
+    max-width: 1400px; margin: 0 auto;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 64px;
+  }
+  .nav-brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem; font-weight: 700;
+    color: var(--amber);
+    text-decoration: none;
+    letter-spacing: 0.02em;
+  }
+  .nav-brand span { color: var(--mist); font-weight: 400; }
+  .nav-links {
+    display: flex; gap: 0.2rem; list-style: none;
+    flex-wrap: wrap;
+  }
+  .nav-links a {
+    color: rgba(255,255,255,0.75);
+    text-decoration: none;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem; font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.4rem 0.75rem;
+    border-radius: 4px;
+    transition: all 0.2s;
+  }
+  .nav-links a:hover {
+    color: var(--amber);
+    background: rgba(201, 147, 58, 0.12);
+  }
+  .hamburger {
+    display: none; flex-direction: column; gap: 5px; cursor: pointer;
+    padding: 8px;
+  }
+  .hamburger span {
+    width: 24px; height: 2px; background: var(--amber); display: block;
+    transition: all 0.3s;
+  }
+  .mobile-menu {
+    display: none;
+    position: fixed; top: 64px; left: 0; right: 0; z-index: 999;
+    background: rgba(15, 36, 16, 0.98);
+    padding: 1rem 2rem 2rem;
+    flex-direction: column; gap: 0.5rem;
+  }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a {
+    color: rgba(255,255,255,0.8);
+    text-decoration: none;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem; text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    transition: color 0.2s;
+  }
+  .mobile-menu a:hover { color: var(--amber); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #0f2410 0%, #1a3a1a 40%, #1e4d1e 70%, #2e6b2e 100%);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    position: relative; overflow: hidden;
+    padding: 6rem 2rem 4rem;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 20% 50%, rgba(200,150,12,0.08) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 80% at 80% 30%, rgba(232,184,75,0.06) 0%, transparent 50%);
+  }
+  .hero-grid {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(200,150,12,0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(200,150,12,0.05) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+  .hero-badge {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem; font-weight: 600; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--amber);
+    border: 1px solid rgba(201,147,58,0.4);
+    padding: 0.4rem 1.2rem; border-radius: 20px;
+    margin-bottom: 2rem; position: relative; z-index: 1;
+    background: rgba(201,147,58,0.08);
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.5rem, 6vw, 5.5rem);
+    font-weight: 900; color: var(--white);
+    text-align: center; line-height: 1.05;
+    position: relative; z-index: 1;
+    max-width: 900px;
+  }
+  .hero h1 em {
+    font-style: italic; color: var(--amber);
+    display: block;
+  }
+  .hero-sub {
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    color: var(--mist); text-align: center;
+    max-width: 650px; margin: 1.5rem auto 0;
+    line-height: 1.7; font-weight: 300;
+    position: relative; z-index: 1;
+  }
+  .hero-ctas {
+    display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;
+    margin-top: 3rem; position: relative; z-index: 1;
+  }
+  .btn-primary {
+    background: var(--gold);
+    color: var(--navy); font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem; font-weight: 600; letter-spacing: 0.1em;
+    text-transform: uppercase; text-decoration: none;
+    padding: 0.9rem 2rem; border-radius: 6px;
+    transition: all 0.3s; border: none; cursor: pointer;
+    box-shadow: 0 4px 20px rgba(201,147,58,0.3);
+  }
+  .btn-primary:hover {
+    background: var(--amber); transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(201,147,58,0.4);
+  }
+  .btn-outline {
+    background: transparent;
+    color: var(--mist); font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem; font-weight: 600; letter-spacing: 0.1em;
+    text-transform: uppercase; text-decoration: none;
+    padding: 0.9rem 2rem; border-radius: 6px;
+    border: 1px solid rgba(245,233,192,0.3);
+    transition: all 0.3s;
+  }
+  .btn-outline:hover {
+    border-color: var(--mist); color: var(--mist);
+    background: rgba(245,233,192,0.06);
+  }
+  .hero-stats {
+    display: flex; gap: 3rem; flex-wrap: wrap; justify-content: center;
+    margin-top: 4rem; position: relative; z-index: 1;
+    padding-top: 3rem;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    width: 100%; max-width: 700px;
+  }
+  .stat { text-align: center; }
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem; font-weight: 700; color: var(--amber);
+    display: block; line-height: 1;
+  }
+  .stat-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem; color: rgba(255,255,255,0.5);
+    text-transform: uppercase; letter-spacing: 0.15em;
+    margin-top: 0.4rem; display: block;
+  }
+  .scroll-hint {
+    position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%);
+    display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+    color: rgba(255,255,255,0.35);
+    font-family: 'JetBrains Mono', monospace; font-size: 0.6rem;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    animation: bounce 2s infinite;
+    z-index: 1;
+  }
+  .scroll-hint::after {
+    content: '';
+    width: 1px; height: 40px;
+    background: linear-gradient(to bottom, rgba(255,255,255,0.3), transparent);
+  }
+  @keyframes bounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(6px); }
+  }
+
+  /* SECTIONS */
+  section { padding: 6rem 2rem; }
+  .container { max-width: 1200px; margin: 0 auto; }
+  .container-wide { max-width: 1400px; margin: 0 auto; }
+
+  .section-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem; font-weight: 600; letter-spacing: 0.25em;
+    text-transform: uppercase; color: var(--steel);
+    margin-bottom: 1rem; display: block;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    font-weight: 700; color: var(--navy);
+    line-height: 1.15; margin-bottom: 1.5rem;
+  }
+  .section-title em { font-style: italic; color: var(--steel); }
+  .section-desc {
+    font-size: 1.1rem; color: var(--text-mid);
+    line-height: 1.8; max-width: 680px;
+  }
+
+  /* QUOTE / MOTIVATIONAL */
+  .quote-band {
+    background: linear-gradient(135deg, #0f2410 0%, #1a3a1a 100%);
+    padding: 5rem 2rem;
+  }
+  .quote-inner {
+    max-width: 900px; margin: 0 auto; text-align: center;
+  }
+  .quote-mark {
+    font-family: 'Playfair Display', serif;
+    font-size: 8rem; color: var(--amber); opacity: 0.3;
+    line-height: 0.5; display: block; margin-bottom: 1rem;
+  }
+  .quote-text {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.4rem, 3vw, 2.2rem);
+    font-style: italic; color: var(--white);
+    line-height: 1.4; margin-bottom: 1.5rem;
+  }
+  .quote-author {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem; color: var(--amber);
+    letter-spacing: 0.2em; text-transform: uppercase;
+  }
+
+  /* IMPORTANCE SECTION */
+  #importancia { background: var(--white); }
+  .pillars-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem; margin-top: 3rem;
+  }
+  .pillar-card {
+    background: var(--cream);
+    border: 1px solid var(--parchment);
+    border-radius: 12px; padding: 2rem;
+    position: relative; overflow: hidden;
+    transition: all 0.3s;
+  }
+  .pillar-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: var(--gold);
+  }
+  .pillar-card:hover { transform: translateY(-4px); box-shadow: 0 20px 50px rgba(0,0,0,0.1); }
+  .pillar-icon {
+    font-size: 2.5rem; margin-bottom: 1rem; display: block;
+  }
+  .pillar-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem; font-weight: 700; color: var(--navy);
+    margin-bottom: 0.75rem;
+  }
+  .pillar-card p {
+    color: var(--text-mid); line-height: 1.7; font-size: 0.95rem;
+  }
+
+  /* INICIAR EN PUBLICACIÓN */
+  #iniciar { background: var(--parchment); }
+  .steps-timeline {
+    margin-top: 3rem; position: relative;
+  }
+  .steps-timeline::before {
+    content: '';
+    position: absolute; left: 28px; top: 0; bottom: 0;
+    width: 2px; background: linear-gradient(to bottom, var(--gold), var(--steel));
+  }
+  .step-item {
+    display: flex; gap: 2rem; margin-bottom: 2.5rem;
+    position: relative;
+  }
+  .step-num {
+    width: 58px; height: 58px; flex-shrink: 0;
+    background: var(--navy); border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem; font-weight: 700; color: var(--amber);
+    border: 3px solid var(--gold);
+    position: relative; z-index: 1;
+  }
+  .step-body {
+    background: var(--white); border-radius: 10px; padding: 1.5rem;
+    flex: 1; border: 1px solid rgba(201,147,58,0.15);
+    transition: all 0.3s;
+  }
+  .step-body:hover { box-shadow: 0 8px 30px rgba(0,0,0,0.08); }
+  .step-body h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem; font-weight: 700; color: var(--navy);
+    margin-bottom: 0.5rem;
+  }
+  .step-body p { color: var(--text-mid); line-height: 1.7; font-size: 0.95rem; }
+
+  /* REVISTAS */
+  #revistas { background: var(--white); }
+  .tabs {
+    display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 2.5rem;
+  }
+  .tab-btn {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem; font-weight: 600; letter-spacing: 0.08em;
+    text-transform: uppercase; padding: 0.6rem 1.2rem;
+    border-radius: 6px; border: 1px solid var(--parchment);
+    background: var(--cream); color: var(--text-mid);
+    cursor: pointer; transition: all 0.2s;
+  }
+  .tab-btn.active, .tab-btn:hover {
+    background: var(--navy); color: var(--amber);
+    border-color: var(--navy);
+  }
+  .tab-content { display: none; }
+  .tab-content.active { display: block; }
+  .journals-table {
+    width: 100%; border-collapse: collapse; margin-top: 1rem;
+    font-size: 0.9rem;
+  }
+  .journals-table thead tr {
+    background: var(--navy); color: var(--white);
+  }
+  .journals-table th {
+    padding: 1rem 1.2rem; text-align: left;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem; font-weight: 600;
+    letter-spacing: 0.1em; text-transform: uppercase;
+  }
+  .journals-table td {
+    padding: 0.9rem 1.2rem; color: var(--text-mid);
+    border-bottom: 1px solid var(--parchment);
+    vertical-align: top;
+  }
+  .journals-table tr:nth-child(even) td { background: var(--cream); }
+  .journals-table tr:hover td { background: rgba(46,107,46,0.06); }
+  .badge {
+    display: inline-block; padding: 0.2rem 0.6rem;
+    border-radius: 4px; font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem; font-weight: 600; letter-spacing: 0.05em;
+  }
+  .badge-gold { background: rgba(201,147,58,0.15); color: var(--gold); }
+  .badge-blue { background: rgba(46,107,46,0.15); color: var(--slate); }
+  .badge-green { background: rgba(91,140,110,0.15); color: var(--sage); }
+  .table-link {
+    color: var(--steel); text-decoration: none;
+    font-family: 'JetBrains Mono', monospace; font-size: 0.75rem;
+    transition: color 0.2s;
+  }
+  .table-link:hover { color: var(--gold); text-decoration: underline; }
+
+  /* IDENTIDAD INVESTIGATIVA */
+  #identidad { background: linear-gradient(135deg, #0f2410 0%, #1a3a1a 100%); }
+  #identidad .section-label { color: var(--amber); }
+  #identidad .section-title { color: var(--white); }
+  #identidad .section-title em { color: var(--steel); }
+  #identidad .section-desc { color: var(--mist); }
+  .identity-cards {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem; margin-top: 3rem;
+  }
+  .id-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 16px; padding: 2rem;
+    transition: all 0.3s;
+  }
+  .id-card:hover {
+    background: rgba(255,255,255,0.08);
+    border-color: rgba(201,147,58,0.3);
+    transform: translateY(-3px);
+  }
+  .id-card-header {
+    display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem;
+  }
+  .id-card-icon {
+    width: 52px; height: 52px; border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.5rem; flex-shrink: 0;
+  }
+  .icon-amber { background: rgba(200,150,12,0.2); }
+  .icon-blue  { background: rgba(46,107,46,0.25); }
+  .icon-green { background: rgba(90,158,90,0.2); }
+  .id-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem; font-weight: 700; color: var(--white);
+  }
+  .id-card p { color: rgba(255,255,255,0.7); line-height: 1.7; font-size: 0.95rem; }
+  .id-steps {
+    margin-top: 1.2rem; padding-top: 1.2rem;
+    border-top: 1px solid rgba(255,255,255,0.08);
+  }
+  .id-steps h4 {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem; color: var(--amber); letter-spacing: 0.15em;
+    text-transform: uppercase; margin-bottom: 0.8rem;
+  }
+  .id-step-item {
+    display: flex; gap: 0.75rem; align-items: flex-start;
+    margin-bottom: 0.5rem; color: rgba(255,255,255,0.65);
+    font-size: 0.88rem; line-height: 1.5;
+  }
+  .id-step-item::before {
+    content: attr(data-n);
+    width: 20px; height: 20px; border-radius: 50%;
+    background: rgba(201,147,58,0.2); color: var(--amber);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'JetBrains Mono', monospace; font-size: 0.65rem;
+    font-weight: 700; flex-shrink: 0;
+  }
+  .platform-btns { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 1.2rem; }
+  .platform-btn {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem; font-weight: 600; letter-spacing: 0.08em;
+    text-transform: uppercase; text-decoration: none;
+    padding: 0.5rem 1rem; border-radius: 6px; border: 1px solid rgba(201,147,58,0.4);
+    color: var(--amber); transition: all 0.2s;
+  }
+  .platform-btn:hover { background: rgba(201,147,58,0.15); }
+
+  /* LIBROS */
+  #libros { background: var(--cream); }
+  .book-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; margin-top: 3rem; }
+  @media (max-width: 768px) { .book-grid { grid-template-columns: 1fr; } }
+  .compare-table {
+    background: var(--white); border-radius: 12px; overflow: hidden;
+    border: 1px solid var(--parchment); box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+  }
+  .compare-table table { width: 100%; border-collapse: collapse; }
+  .compare-table th {
+    background: var(--navy); color: var(--white); padding: 0.9rem 1rem;
+    font-family: 'JetBrains Mono', monospace; font-size: 0.7rem;
+    text-transform: uppercase; letter-spacing: 0.1em; text-align: left;
+  }
+  .compare-table td {
+    padding: 0.8rem 1rem; border-bottom: 1px solid var(--parchment);
+    font-size: 0.9rem; color: var(--text-mid);
+  }
+  .compare-table tr:last-child td { border-bottom: none; }
+  .compare-table tr:nth-child(even) td { background: var(--cream); }
+  .editorials-list {
+    background: var(--white); border-radius: 12px; padding: 1.5rem;
+    border: 1px solid var(--parchment);
+  }
+  .editorial-item {
+    display: flex; gap: 1rem; align-items: flex-start;
+    padding: 0.9rem 0; border-bottom: 1px solid var(--parchment);
+  }
+  .editorial-item:last-child { border-bottom: none; }
+  .editorial-icon { font-size: 1.5rem; flex-shrink: 0; margin-top: 2px; }
+  .editorial-item h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem; font-weight: 700; color: var(--navy);
+    margin-bottom: 0.25rem;
+  }
+  .editorial-item p { font-size: 0.85rem; color: var(--text-mid); line-height: 1.5; }
+  .isbn-box {
+    background: linear-gradient(135deg, #0f2410 0%, #1a3a1a 100%);
+    border-radius: 12px; padding: 2rem; color: var(--white);
+    margin-top: 1.5rem;
+  }
+  .isbn-box h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem; margin-bottom: 0.75rem; color: var(--amber);
+  }
+  .isbn-box p { font-size: 0.95rem; line-height: 1.7; color: rgba(255,255,255,0.8); }
+
+  /* GRUPOS */
+  #grupos { background: var(--white); }
+  .grupos-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 3rem; }
+  .grupo-card {
+    border-radius: 12px; padding: 1.75rem; transition: all 0.3s;
+    position: relative; overflow: hidden;
+  }
+  .grupo-card.teal { background: linear-gradient(135deg, #0f2410, #1a3a1a); color: white; }
+  .grupo-card.gold { background: linear-gradient(135deg, #3a2a06, #5c4210); color: white; }
+  .grupo-card.sage { background: linear-gradient(135deg, #1a3a1a, #2e6b2e); color: white; }
+  .grupo-card.terracotta { background: linear-gradient(135deg, #2a1f06, #4a3810); color: white; }
+  .grupo-card:hover { transform: translateY(-4px); }
+  .grupo-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem; font-weight: 700; margin-bottom: 0.75rem;
+    color: var(--amber);
+  }
+  .grupo-card p { font-size: 0.9rem; line-height: 1.7; opacity: 0.85; }
+  .grupo-card ul { margin-top: 0.75rem; padding-left: 1.2rem; }
+  .grupo-card li { font-size: 0.85rem; margin-bottom: 0.3rem; opacity: 0.8; }
+  .minciencias-box {
+    background: var(--cream); border-radius: 12px; padding: 2.5rem;
+    margin-top: 3rem; border: 1px solid var(--parchment);
+    display: flex; gap: 2rem; align-items: flex-start;
+    flex-wrap: wrap;
+  }
+  .minciencias-icon { font-size: 4rem; flex-shrink: 0; }
+  .minciencias-box h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem; color: var(--navy); margin-bottom: 1rem;
+  }
+  .minciencias-box p { color: var(--text-mid); line-height: 1.7; margin-bottom: 0.75rem; }
+
+  /* VISIBILIDAD */
+  #visibilidad { background: var(--parchment); }
+  .visibility-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem; margin-top: 3rem;
+  }
+  .vis-card {
+    background: var(--white); border-radius: 12px; padding: 2rem;
+    border: 1px solid var(--parchment); transition: all 0.3s;
+    border-top: 4px solid transparent;
+  }
+  .vis-card.c1 { border-top-color: var(--gold); }
+  .vis-card.c2 { border-top-color: var(--slate); }
+  .vis-card.c3 { border-top-color: var(--steel); }
+  .vis-card.c4 { border-top-color: var(--terracotta); }
+  .vis-card:hover { transform: translateY(-4px); box-shadow: 0 15px 40px rgba(0,0,0,0.1); }
+  .vis-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem; font-weight: 700; color: var(--navy);
+    margin-bottom: 0.75rem; margin-top: 0.5rem;
+  }
+  .vis-card p { color: var(--text-mid); font-size: 0.9rem; line-height: 1.7; }
+  .vis-icon { font-size: 2rem; }
+
+  /* TESTIMONIOS */
+  #testimonios { background: var(--white); }
+  .testimonials-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem; margin-top: 3rem;
+  }
+  .testimonial {
+    background: var(--cream); border-radius: 16px; padding: 2rem;
+    position: relative; border: 1px solid var(--parchment);
+    transition: all 0.3s;
+  }
+  .testimonial:hover { box-shadow: 0 10px 30px rgba(0,0,0,0.08); }
+  .testimonial::before {
+    content: '"';
+    font-family: 'Playfair Display', serif;
+    font-size: 5rem; color: var(--gold); opacity: 0.3;
+    position: absolute; top: 0.5rem; left: 1.5rem;
+    line-height: 1;
+  }
+  .testimonial p {
+    font-style: italic; color: var(--text-mid); line-height: 1.7;
+    font-size: 0.95rem; padding-top: 1.5rem; margin-bottom: 1.5rem;
+  }
+  .testimonial-author { display: flex; align-items: center; gap: 0.75rem; }
+  .author-avatar {
+    width: 44px; height: 44px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.3rem; flex-shrink: 0;
+  }
+  .av1 { background: rgba(200,150,12,0.2); }
+  .av2 { background: rgba(46,107,46,0.2); }
+  .av3 { background: rgba(90,158,90,0.2); }
+  .author-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.95rem; font-weight: 700; color: var(--navy);
+  }
+  .author-role {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem; color: var(--text-light); letter-spacing: 0.05em;
+  }
+
+  /* FOOTER */
+  footer {
+    background: #0f2410;
+    padding: 4rem 2rem 2rem;
+    color: rgba(245,233,192,0.7);
+  }
+  .footer-inner {
+    max-width: 1200px; margin: 0 auto;
+    display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 3rem; margin-bottom: 3rem;
+  }
+  .footer-brand h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem; color: var(--mist); margin-bottom: 0.75rem;
+  }
+  .footer-brand p { font-size: 0.9rem; line-height: 1.7; margin-bottom: 1.5rem; }
+  .footer-col h4 {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem; font-weight: 600; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--amber); margin-bottom: 1.2rem;
+  }
+  .footer-col ul { list-style: none; }
+  .footer-col li { margin-bottom: 0.6rem; }
+  .footer-col a {
+    color: rgba(245,233,192,0.6); text-decoration: none;
+    font-size: 0.9rem; transition: color 0.2s;
+  }
+  .footer-col a:hover { color: var(--amber); }
+  .footer-bottom {
+    border-top: 1px solid rgba(245,233,192,0.12);
+    padding-top: 2rem; text-align: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem; color: rgba(245,233,192,0.35);
+    letter-spacing: 0.05em;
+  }
+
+  /* MISC */
+  .divider {
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--parchment), transparent);
+    margin: 0;
+  }
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+  @media (max-width: 900px) { .two-col { grid-template-columns: 1fr; gap: 2rem; } }
+  .highlight-box {
+    background: linear-gradient(135deg, rgba(200,150,12,0.08), rgba(46,107,46,0.06));
+    border: 1px solid rgba(200,150,12,0.2);
+    border-radius: 12px; padding: 2rem;
+    border-left: 4px solid var(--gold);
+  }
+  .highlight-box h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem; color: var(--navy); margin-bottom: 0.75rem;
+  }
+  .highlight-box p { color: var(--text-mid); line-height: 1.7; }
+  .tag-row { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 1rem; }
+  .tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem; padding: 0.3rem 0.7rem; border-radius: 4px;
+    font-weight: 600; letter-spacing: 0.06em;
+  }
+  .tag-navy { background: rgba(26,58,26,0.1); color: var(--navy); }
+  .tag-gold { background: rgba(200,150,12,0.15); color: var(--gold); }
+  .tag-blue { background: rgba(46,107,46,0.15); color: var(--slate); }
+  .book-structure {
+    list-style: none; margin-top: 1rem;
+  }
+  .book-structure li {
+    display: flex; gap: 0.75rem; padding: 0.6rem 0;
+    border-bottom: 1px solid var(--parchment); font-size: 0.9rem;
+    color: var(--text-mid);
+  }
+  .book-structure li:last-child { border-bottom: none; }
+  .book-structure li span { font-weight: 600; color: var(--navy); min-width: 120px; }
+
+  /* RESPONSIVE */
+  @media (max-width: 1024px) {
+    .footer-inner { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 860px) {
+    .publindex-grid { grid-template-columns: 1fr !important; }
+  }
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+    .footer-inner { grid-template-columns: 1fr; gap: 2rem; }
+    section { padding: 4rem 1.5rem; }
+    .steps-timeline::before { display: none; }
+    .book-grid { grid-template-columns: 1fr; }
+    .two-col { grid-template-columns: 1fr; }
+    .journals-table { font-size: 0.8rem; }
+    .journals-table th, .journals-table td { padding: 0.6rem 0.75rem; }
+  }
+  @media (max-width: 480px) {
+    .hero h1 { font-size: 2.2rem; }
+    .hero-stats { gap: 2rem; }
+    .step-item { flex-direction: column; }
+    .steps-timeline::before { display: none; }
+  }
+
+  /* ANIMATIONS */
+  .fade-in { opacity: 0; transform: translateY(20px); transition: all 0.6s ease; }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+  /* TABLE RESPONSIVE WRAPPER */
+  .table-wrap { overflow-x: auto; border-radius: 10px; border: 1px solid var(--parchment); }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-brand" style="display:inline-flex;align-items:center;gap:0.6rem;"><span style="background:rgba(200,150,12,0.2);border:1px solid rgba(200,150,12,0.4);color:var(--amber);font-size:0.72rem;font-weight:700;padding:0.2rem 0.55rem;border-radius:4px;">JPF</span>Ciencia&<span>Escritura</span></a>
+    <ul class="nav-links">
+      <li><a href="#importancia">Importancia</a></li>
+      <li><a href="#iniciar">Cómo Iniciar</a></li>
+      <li><a href="#revistas">Revistas</a></li>
+      <li><a href="#identidad">Identidad</a></li>
+      <li><a href="#libros">Libros</a></li>
+      <li><a href="#grupos">Grupos</a></li>
+      <li><a href="#visibilidad">Visibilidad</a></li>
+    </ul>
+    <div class="hamburger" onclick="toggleMenu()" id="hamburger">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#importancia" onclick="toggleMenu()">Importancia</a>
+  <a href="#iniciar" onclick="toggleMenu()">Cómo Iniciar</a>
+  <a href="#revistas" onclick="toggleMenu()">Revistas</a>
+  <a href="#identidad" onclick="toggleMenu()">Identidad</a>
+  <a href="#libros" onclick="toggleMenu()">Libros</a>
+  <a href="#grupos" onclick="toggleMenu()">Grupos</a>
+  <a href="#visibilidad" onclick="toggleMenu()">Visibilidad</a>
+  <a href="#testimonios" onclick="toggleMenu()">Testimonios</a>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-badge">I.E. Julio Pérez Ferrero · Cúcuta · Convivencia y Productividad</div>
+  <h1>Escribe, Publica<em>e Impacta el Mundo</em></h1>
+  <p class="hero-sub">Recurso académico de la Institución Educativa Julio Pérez Ferrero para construir identidad investigativa, publicar en revistas indexadas y libros académicos, y potenciar la visibilidad científica en Colombia y el mundo.</p>
+  <div class="hero-ctas">
+    <a href="#iniciar" class="btn-primary">Comenzar ahora →</a>
+    <a href="#revistas" class="btn-outline">Ver revistas colombianas</a>
+  </div>
+  <div class="hero-stats">
+    <div class="stat">
+      <span class="stat-num">+400</span>
+      <span class="stat-label">Revistas indexadas en Colombia</span>
+    </div>
+    <div class="stat">
+      <span class="stat-num">36K+</span>
+      <span class="stat-label">Grupos en GrupLAC</span>
+    </div>
+    <div class="stat">
+      <span class="stat-num">2M+</span>
+      <span class="stat-label">Investigadores en ORCID Colombia</span>
+    </div>
+  </div>
+  <div class="scroll-hint">Explora más</div>
+</div>
+
+<!-- QUOTE 1 -->
+<div class="quote-band">
+  <div class="quote-inner">
+    <span class="quote-mark">"</span>
+    <p class="quote-text">Publicar no es solo comunicar resultados; es contribuir al edificio colectivo del conocimiento humano.</p>
+    <span class="quote-author">— Principio de la escritura académica</span>
+  </div>
+</div>
+
+<!-- IMPORTANCIA -->
+<section id="importancia">
+  <div class="container">
+    <span class="section-label">01 — Fundamentos</span>
+    <h2 class="section-title">Por qué es vital la <em>escritura científica</em></h2>
+    <p class="section-desc">La escritura académica y científica es el vehículo por excelencia para la creación, validación y difusión del conocimiento. No se trata solo de redactar: es pensar con rigor, argumentar con evidencia y contribuir al avance de tu disciplina.</p>
+    <div class="pillars-grid" style="margin-top:3rem">
+      <div class="pillar-card fade-in">
+        <span class="pillar-icon">🔬</span>
+        <h3>Generación de conocimiento</h3>
+        <p>La investigación que no se publica no existe socialmente. Escribir es el acto de hacer visible tu trabajo y permitir que otros lo validen, repliquen y construyan sobre él.</p>
+      </div>
+      <div class="pillar-card fade-in">
+        <span class="pillar-icon">🌐</span>
+        <h3>Visibilidad e impacto global</h3>
+        <p>Publicar en revistas indexadas permite que tu trabajo sea citado internacionalmente, aumentando tu impacto académico y el de tu institución a nivel mundial.</p>
+      </div>
+      <div class="pillar-card fade-in">
+        <span class="pillar-icon">🎓</span>
+        <h3>Desarrollo profesional</h3>
+        <p>La producción académica es un criterio esencial para ascensos, convocatorias, becas, proyectos y reconocimiento en el sistema de ciencia y tecnología de Colombia.</p>
+      </div>
+      <div class="pillar-card fade-in">
+        <span class="pillar-icon">🤝</span>
+        <h3>Colaboración y redes</h3>
+        <p>Publicar abre puertas a colaboraciones con investigadores nacionales e internacionales, facilitando la construcción de redes académicas sólidas y duraderas.</p>
+      </div>
+      <div class="pillar-card fade-in">
+        <span class="pillar-icon">💡</span>
+        <h3>Pensamiento crítico</h3>
+        <p>El proceso de escritura científica fortalece la capacidad de analizar, sintetizar y argumentar, habilidades fundamentales en cualquier área del saber.</p>
+      </div>
+      <div class="pillar-card fade-in">
+        <span class="pillar-icon">🏛️</span>
+        <h3>Responsabilidad social</h3>
+        <p>La ciencia tiene una dimensión ética: compartir hallazgos contribuye al bienestar de la sociedad y permite que el conocimiento llegue a quienes más lo necesitan.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- INICIAR -->
+<section id="iniciar" style="background:var(--parchment)">
+  <div class="container">
+    <span class="section-label">02 — Primeros Pasos</span>
+    <h2 class="section-title">Cómo <em>iniciar</em> en la publicación académica</h2>
+    <p class="section-desc">El camino hacia tu primera publicación puede parecer intimidante, pero con una hoja de ruta clara y pasos concretos, cualquier investigador principiante puede lograrlo.</p>
+
+    <div class="two-col" style="margin-top:3rem">
+      <div>
+        <div class="steps-timeline">
+          <div class="step-item fade-in">
+            <div class="step-num">1</div>
+            <div class="step-body">
+              <h3>Define tu tema y pregunta de investigación</h3>
+              <p>Identifica un problema relevante en tu área, formula una pregunta clara y delimita el alcance de tu trabajo. Un buen artículo nace de una pregunta bien planteada.</p>
+            </div>
+          </div>
+          <div class="step-item fade-in">
+            <div class="step-num">2</div>
+            <div class="step-body">
+              <h3>Revisa el estado del arte</h3>
+              <p>Busca en bases de datos como Scopus, Web of Science, Redalyc y SciELO. Debes conocer lo que ya se ha publicado para identificar la brecha que tu trabajo llena.</p>
+            </div>
+          </div>
+          <div class="step-item fade-in">
+            <div class="step-num">3</div>
+            <div class="step-body">
+              <h3>Diseña tu metodología</h3>
+              <p>Selecciona el enfoque metodológico adecuado (cuantitativo, cualitativo o mixto), define tu muestra, instrumentos y procedimientos de análisis de datos.</p>
+            </div>
+          </div>
+          <div class="step-item fade-in">
+            <div class="step-num">4</div>
+            <div class="step-body">
+              <h3>Redacta con estructura IMRyD</h3>
+              <p><strong>Introducción, Métodos, Resultados y Discusión.</strong> Esta estructura es el estándar internacional para artículos científicos en la mayoría de disciplinas.</p>
+            </div>
+          </div>
+          <div class="step-item fade-in">
+            <div class="step-num">5</div>
+            <div class="step-body">
+              <h3>Selecciona la revista adecuada</h3>
+              <p>Investiga el scope de la revista, su índice de aceptación, tiempo de respuesta y factor de impacto. Asegúrate de que tu trabajo sea coherente con su línea editorial.</p>
+            </div>
+          </div>
+          <div class="step-item fade-in">
+            <div class="step-num">6</div>
+            <div class="step-body">
+              <h3>Somete, revisa y persiste</h3>
+              <p>Envía tu artículo, responde con rigor los comentarios de los pares evaluadores y no te desanimes ante el rechazo. La mayoría de artículos publicados pasaron por múltiples revisiones.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="highlight-box">
+          <h3>💡 Beneficios de publicar en revistas indexadas</h3>
+          <p>Las publicaciones en revistas con indexación Q1–Q4 en Scopus/WoS, o categorías A1–B en Publindex Colombia, ofrecen:</p>
+          <div class="tag-row">
+            <span class="tag tag-navy">Reconocimiento Minciencias</span>
+            <span class="tag tag-gold">Puntuación CvLAC</span>
+            <span class="tag tag-blue">Citaciones internacionales</span>
+            <span class="tag tag-navy">Evaluación docente</span>
+            <span class="tag tag-gold">Visibilidad institucional</span>
+            <span class="tag tag-blue">Redes de colaboración</span>
+          </div>
+        </div>
+
+        <div style="margin-top:2rem; background:var(--white); border-radius:12px; padding:2rem; border:1px solid var(--parchment)">
+          <h3 style="font-family:'Playfair Display',serif; color:var(--navy); margin-bottom:1.2rem; font-size:1.2rem">📋 Tipos de artículos científicos</h3>
+          <ul style="list-style:none">
+            <li style="padding:0.6rem 0; border-bottom:1px solid var(--parchment); font-size:0.9rem; color:var(--text-mid)"><strong style="color:var(--navy); display:block">Artículo original</strong>Presenta resultados inéditos de investigación con metodología detallada.</li>
+            <li style="padding:0.6rem 0; border-bottom:1px solid var(--parchment); font-size:0.9rem; color:var(--text-mid)"><strong style="color:var(--navy); display:block">Artículo de revisión</strong>Síntesis crítica y sistemática del estado del arte sobre un tema.</li>
+            <li style="padding:0.6rem 0; border-bottom:1px solid var(--parchment); font-size:0.9rem; color:var(--text-mid)"><strong style="color:var(--navy); display:block">Artículo de reflexión</strong>Análisis crítico o propuestas teóricas desde la perspectiva del autor.</li>
+            <li style="padding:0.6rem 0; font-size:0.9rem; color:var(--text-mid)"><strong style="color:var(--navy); display:block">Comunicación corta</strong>Resultados preliminares o de estudios piloto relevantes para la comunidad.</li>
+          </ul>
+        </div>
+
+        <div style="margin-top:2rem; background:var(--white); border-radius:12px; padding:1.5rem; border:1px solid var(--parchment)">
+          <h3 style="font-family:'Playfair Display',serif; color:var(--navy); margin-bottom:1rem; font-size:1.1rem">🛡️ Ética en publicación</h3>
+          <p style="color:var(--text-mid); font-size:0.9rem; line-height:1.7">El plagio, la fabricación de datos y la autoría honorífica son faltas graves. Consulta las directrices del <strong>Committee on Publication Ethics (COPE)</strong> y usa herramientas de detección como Turnitin o iThenticate.</p>
+          <div class="tag-row">
+            <span class="tag tag-gold">Originalidad</span>
+            <span class="tag tag-navy">Transparencia</span>
+            <span class="tag tag-blue">Reproducibilidad</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVISTAS -->
+<section id="revistas">
+  <div class="container-wide" style="padding:0 2rem">
+    <span class="section-label">03 — Revistas Colombianas</span>
+    <h2 class="section-title">Revistas científicas <em>colombianas</em> reconocidas</h2>
+    <p class="section-desc">Colombia cuenta con un creciente ecosistema de revistas académicas. A continuación encontrarás una selección destacada por área de conocimiento, incluyendo revistas del departamento de Norte de Santander.</p>
+
+    <!-- PUBLINDEX EXPLAINER BOX -->
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; margin-top:2.5rem; margin-bottom:2.5rem;" class="publindex-grid">
+
+      <!-- INDEXADA -->
+      <div style="background:linear-gradient(135deg,#0f2410,#1a3a1a); border-radius:14px; padding:2rem; border:1px solid rgba(201,147,58,0.35); position:relative; overflow:hidden;">
+        <div style="position:absolute;top:-10px;right:-10px;font-size:5rem;opacity:0.06;">🇨🇴</div>
+        <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:1rem;">
+          <span style="background:rgba(201,147,58,0.2);color:#e8b84b;font-family:'JetBrains Mono',monospace;font-size:0.65rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;padding:0.35rem 0.8rem;border-radius:20px;border:1px solid rgba(201,147,58,0.4);">Revistas nacionales</span>
+        </div>
+        <h3 style="font-family:'Playfair Display',serif;font-size:1.4rem;color:#e8b84b;margin-bottom:0.75rem;">📋 Revista <em>Indexada</em></h3>
+        <p style="color:rgba(255,255,255,0.8);font-size:0.92rem;line-height:1.75;margin-bottom:1rem;">Una revista <strong style="color:white;">indexada</strong> es una <strong style="color:white;">revista colombiana</strong> que ha sido evaluada y clasificada por Minciencias dentro del <strong style="color:#e8b84b;">Índice Bibliográfico Nacional – IBN Publindex</strong>, de acuerdo con criterios de gestión editorial, calidad del proceso de evaluación por pares, visibilidad e impacto.</p>
+        <p style="color:rgba(255,255,255,0.7);font-size:0.88rem;line-height:1.7;margin-bottom:1.25rem;">Las revistas nacionales se clasifican en cuatro categorías, de mayor a menor exigencia:</p>
+        <div style="display:flex;flex-wrap:wrap;gap:0.5rem;margin-bottom:1.25rem;">
+          <span style="background:rgba(201,147,58,0.25);color:#e8b84b;font-family:'JetBrains Mono',monospace;font-size:0.7rem;font-weight:700;padding:0.4rem 0.9rem;border-radius:5px;border:1px solid rgba(201,147,58,0.4);">A1 — Máxima</span>
+          <span style="background:rgba(201,147,58,0.15);color:#e8b84b;font-family:'JetBrains Mono',monospace;font-size:0.7rem;font-weight:700;padding:0.4rem 0.9rem;border-radius:5px;border:1px solid rgba(201,147,58,0.25);">A2</span>
+          <span style="background:rgba(90,158,90,0.15);color:#f5e9c0;font-family:'JetBrains Mono',monospace;font-size:0.7rem;font-weight:700;padding:0.4rem 0.9rem;border-radius:5px;border:1px solid rgba(90,158,90,0.25);">B</span>
+          <span style="background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.6);font-family:'JetBrains Mono',monospace;font-size:0.7rem;font-weight:700;padding:0.4rem 0.9rem;border-radius:5px;border:1px solid rgba(255,255,255,0.12);">C — Mínima</span>
+        </div>
+        <p style="color:rgba(255,255,255,0.55);font-size:0.82rem;line-height:1.6;border-top:1px solid rgba(255,255,255,0.08);padding-top:1rem;">💡 Para participar en convocatorias Minciencias y obtener puntuación en CvLAC, tu revista debe estar <strong style="color:rgba(255,255,255,0.75);">indexada en Publindex</strong>. La última convocatoria activa fue la 910 de 2021.</p>
+        <div style="margin-top:1rem;">
+          <a href="https://minciencias.gov.co/glosario/p-ublindex" target="_blank" style="font-family:'JetBrains Mono',monospace;font-size:0.7rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;text-decoration:none;padding:0.55rem 1.1rem;border-radius:6px;border:1px solid rgba(201,147,58,0.5);color:#e8b84b;transition:all 0.2s;display:inline-block;">Ver Publindex →</a>
+        </div>
+      </div>
+
+      <!-- HOMOLOGADA -->
+      <div style="background:linear-gradient(135deg,#1a3a1a,#2e6b2e); border-radius:14px; padding:2rem; border:1px solid rgba(90,158,90,0.3); position:relative; overflow:hidden;">
+        <div style="position:absolute;top:-10px;right:-10px;font-size:5rem;opacity:0.06;">🌐</div>
+        <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:1rem;">
+          <span style="background:rgba(90,158,90,0.2);color:#f5e9c0;font-family:'JetBrains Mono',monospace;font-size:0.65rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;padding:0.35rem 0.8rem;border-radius:20px;border:1px solid rgba(90,158,90,0.35);">Revistas internacionales</span>
+        </div>
+        <h3 style="font-family:'Playfair Display',serif;font-size:1.4rem;color:#f5e9c0;margin-bottom:0.75rem;">🌍 Revista <em>Homologada</em></h3>
+        <p style="color:rgba(255,255,255,0.8);font-size:0.92rem;line-height:1.75;margin-bottom:1rem;">Una revista <strong style="color:white;">homologada</strong> es una <strong style="color:white;">revista internacional</strong> que Minciencias reconoce como equivalente a una categoría del IBN Publindex, siempre que esté incluida en los índices citacionales internacionales <strong style="color:#f5e9c0;">Scimago Journal Rank (SJR)</strong> o <strong style="color:#f5e9c0;">Journal Citation Reports (JCR)</strong>, o en índices bibliográficos como MEDLINE/PubMed, PsycINFO o A&HCI.</p>
+        <p style="color:rgba(255,255,255,0.7);font-size:0.88rem;line-height:1.7;margin-bottom:1.25rem;">La equivalencia con Publindex se establece según el cuartil Scimago (SJR):</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.4rem;margin-bottom:1.25rem;">
+          <div style="background:rgba(201,147,58,0.15);border-radius:6px;padding:0.5rem 0.75rem;font-family:'JetBrains Mono',monospace;font-size:0.68rem;color:#e8b84b;border:1px solid rgba(201,147,58,0.25);">Q1 SJR → <strong>A1</strong></div>
+          <div style="background:rgba(201,147,58,0.1);border-radius:6px;padding:0.5rem 0.75rem;font-family:'JetBrains Mono',monospace;font-size:0.68rem;color:#e8b84b;border:1px solid rgba(201,147,58,0.18);">Q2 SJR → <strong>A2</strong></div>
+          <div style="background:rgba(90,158,90,0.12);border-radius:6px;padding:0.5rem 0.75rem;font-family:'JetBrains Mono',monospace;font-size:0.68rem;color:#f5e9c0;border:1px solid rgba(90,158,90,0.2);">Q3 SJR → <strong>B</strong></div>
+          <div style="background:rgba(255,255,255,0.06);border-radius:6px;padding:0.5rem 0.75rem;font-family:'JetBrains Mono',monospace;font-size:0.68rem;color:rgba(255,255,255,0.55);border:1px solid rgba(255,255,255,0.1);">Q4 SJR → <strong>C</strong></div>
+        </div>
+        <p style="color:rgba(255,255,255,0.55);font-size:0.82rem;line-height:1.6;border-top:1px solid rgba(255,255,255,0.08);padding-top:1rem;">💡 Publicar en una revista internacional con SJR Q1 o Q2 tiene el mismo reconocimiento en Minciencias que una revista nacional A1 o A2 de Publindex. Así funcionan desde la <strong style="color:rgba(255,255,255,0.7);">Convocatoria 768 de 2016</strong>.</p>
+        <div style="margin-top:1rem;">
+          <a href="https://www.scimagojr.com" target="_blank" style="font-family:'JetBrains Mono',monospace;font-size:0.7rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;text-decoration:none;padding:0.55rem 1.1rem;border-radius:6px;border:1px solid rgba(90,158,90,0.5);color:#f5e9c0;transition:all 0.2s;display:inline-block;">Ver Scimago →</a>
+          <a href="https://minciencias.gov.co/la-ciencia-en-cifras/publindex" target="_blank" style="font-family:'JetBrains Mono',monospace;font-size:0.7rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;text-decoration:none;padding:0.55rem 1.1rem;border-radius:6px;border:1px solid rgba(90,158,90,0.35);color:rgba(245,233,192,0.65);transition:all 0.2s;display:inline-block;margin-left:0.5rem;">Estadísticas Publindex →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- KEY DIFFERENCE CALLOUT -->
+    <div style="background:linear-gradient(90deg,rgba(201,147,58,0.08),rgba(46,107,46,0.05));border:1px solid rgba(201,147,58,0.2);border-radius:10px;padding:1rem 1.5rem;margin-bottom:2.5rem;display:flex;align-items:center;gap:1rem;flex-wrap:wrap;">
+      <span style="font-size:1.5rem;">⚖️</span>
+      <p style="font-size:0.9rem;color:var(--text-mid);line-height:1.6;flex:1;min-width:200px;"><strong style="color:var(--navy);">Diferencia clave:</strong> "Indexada" aplica a <strong>revistas colombianas</strong> clasificadas en el IBN Publindex (A1, A2, B, C). "Homologada" aplica a <strong>revistas internacionales</strong> reconocidas por Minciencias equivalentes a esas categorías, en función de su cuartil en Scimago o JCR. Ambas cuentan para el sistema de medición de investigadores en Colombia.</p>
+    </div>
+
+    <div class="tabs">
+      <button class="tab-btn active" onclick="showTab('educacion')">📚 Educación</button>
+      <button class="tab-btn" onclick="showTab('tecnologia')">💻 Tecnología e Innovación</button>
+      <button class="tab-btn" onclick="showTab('sociales')">🤝 Ciencias Sociales</button>
+      <button class="tab-btn" onclick="showTab('humanidades')">🎭 Humanidades</button>
+      <button class="tab-btn" onclick="showTab('nortesantander')" style="border-color:rgba(201,147,58,0.35);color:#b8860b;">🏔️ Norte de Santander</button>
+    </div>
+
+    <div id="tab-educacion" class="tab-content active">
+      <div class="table-wrap">
+        <table class="journals-table">
+          <thead><tr><th>Revista</th><th>Institución</th><th>Indexación / Categoría</th><th>Área</th><th>Enlace</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Revista Colombiana de Educación</strong></td><td>Universidad Pedagógica Nacional</td><td><span class="badge badge-gold">Homologada Q2 Scimago</span></td><td>Educación</td><td><a href="https://revistas.pedagogica.edu.co/index.php/RCE" class="table-link" target="_blank">Visitar →</a></td></tr>
+            <tr><td><strong>Educación y Educadores</strong></td><td>Universidad de La Sabana</td><td><span class="badge badge-gold">Homologada · Scopus</span></td><td>Pedagogía</td><td><a href="https://educacionyeducadores.unisabana.edu.co" class="table-link" target="_blank">Visitar →</a></td></tr>
+            <tr><td><strong>Actualidades Pedagógicas</strong></td><td>Universidad de La Salle</td><td><span class="badge badge-blue">Indexada · Publindex B</span></td><td>Didáctica</td><td><a href="https://ciencia.lasalle.edu.co/ap" class="table-link" target="_blank">Visitar →</a></td></tr>
+            <tr><td><strong>Zona Próxima</strong></td><td>Universidad del Norte</td><td><span class="badge badge-blue">Indexada · Redalyc / Latindex</span></td><td>Educación</td><td><a href="https://rcientificas.uninorte.edu.co/index.php/zona" class="table-link" target="_blank">Visitar →</a></td></tr>
+            <tr><td><strong>Pedagogía y Saberes</strong></td><td>Universidad Pedagógica Nacional</td><td><span class="badge badge-blue">Indexada · Latindex</span></td><td>Pedagogía</td><td><a href="https://revistas.pedagogica.edu.co/index.php/PYS" class="table-link" target="_blank">Visitar →</a></td></tr>
+            <tr><td><strong>Infancias Imágenes</strong></td><td>Universidad Distrital FJC</td><td><span class="badge badge-blue">Indexada · Redalyc</span></td><td>Primera Infancia</td><td><a href="https://revistas.udistrital.edu.co/index.php/infancias" class="table-link" target="_blank">Visitar →</a></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div id="tab-tecnologia" class="tab-content">
+      <div class="table-wrap">
+        <table class="journals-table">
+          <thead><tr><th>Revista</th><th>Institución</th><th>Indexación / Categoría</th><th>Área</th><th>Enlace</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Ingeniería e Investigación</strong></td><td>Universidad Nacional de Colombia</td><td><span class="badge badge-gold">Homologada · Scopus / SciELO</span></td><td>Ingeniería</td><td><a href="https://revistas.unal.edu.co/index.php/ingeinv" class="table-link" target="_blank">Visitar →</a></td></tr>
+            <tr><td><strong>Tecno Lógicas</strong></td><td>Instituto Tecnológico Metropolitano</td><td><span class="badge badge-gold">Homologada · Scopus</span></td><td>Tecnología</td><td><a href="https://revistas.itm.edu.co/index.php/tecnologicas" class="table-link" target="_blank">Visitar →</a></td></tr>
+            <tr><td><strong>DYNA</strong></td><td>Universidad Nacional, Medellín</td><td><span class="badge badge-gold">Homologada · Scopus Q2</span></td><td>Ingeniería</td><td><a href="https://dyna.unalmed.edu.co" class="table-link" target="_blank">Visitar →</a></td></tr>
+            <tr><td><strong>Sistemas y Telemática</strong></td><td>Universidad ICESI</td><td><span class="badge badge-blue">Indexada · Latindex</span></td><td>TIC</td><td><a href="https://www.icesi.edu.co/revistas/index.php/sistemas_telematica" class="table-link" target="_blank">Visitar →</a></td></tr>
+            <tr><td><strong>Redes de Ingeniería</strong></td><td>Universidad Distrital FJC</td><td><span class="badge badge-blue">Indexada · Publindex C</span></td><td>Redes y Telecomunicaciones</td><td><a href="https://revistas.udistrital.edu.co/index.php/REDES" class="table-link" target="_blank">Visitar →</a></td></tr>
+            <tr><td><strong>Ingeniería Solidaria</strong></td><td>Universidad Cooperativa de Colombia</td><td><span class="badge badge-blue">Indexada · Redalyc</span></td><td>Innovación Social</td><td><a href="https://revistas.ucc.edu.co/index.php/ingenieria" class="table-link" target="_blank">Visitar →</a></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div id="tab-sociales" class="tab-content">
+      <div class="table-wrap">
+        <table class="journals-table">
+          <thead><tr><th>Revista</th><th>Institución</th><th>Indexación / Categoría</th><th>Área</th><th>Enlace</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Revista de Estudios Sociales</strong></td><td>Universidad de los Andes</td><td><span class="badge badge-gold">Homologada · Scopus / SSCI</span></td><td>Ciencias Sociales</td><td><a href="https://revistas.uniandes.edu.co/journal/res" class="table-link" target="_blank">Visitar →</a></td></tr>
+            <tr><td><strong>Colombia Internacional</strong></td><td>Universidad de los Andes</td><td><span class="badge badge-gold">Homologada · Scopus</span></td><td>Relaciones Internacionales</td><td><a href="https://colombiainternacional.uniandes.edu.co" class="table-link" target="_blank">Visitar →</a></td></tr>
+            <tr><td><strong>Trabajo Social</strong></td><td>Universidad Nacional de Colombia</td><td><span class="badge badge-gold">Homologada · Scopus</span></td><td>Trabajo Social</td><td><a href="https://revistas.unal.edu.co/index.php/tsocial" class="table-link" target="_blank">Visitar →</a></td></tr>
+            <tr><td><strong>Papel Político</strong></td><td>Pontificia Universidad Javeriana</td><td><span class="badge badge-blue">Indexada · Redalyc / Latindex</span></td><td>Ciencia Política</td><td><a href="https://revistas.javeriana.edu.co/index.php/papelpol" class="table-link" target="_blank">Visitar →</a></td></tr>
+            <tr><td><strong>Sociedad y Economía</strong></td><td>Universidad del Valle</td><td><span class="badge badge-blue">Indexada · Redalyc</span></td><td>Sociología / Economía</td><td><a href="https://sociedadyeconomia.univalle.edu.co" class="table-link" target="_blank">Visitar →</a></td></tr>
+            <tr><td><strong>Psicología desde el Caribe</strong></td><td>Universidad del Norte</td><td><span class="badge badge-gold">Indexada · SciELO</span></td><td>Psicología Social</td><td><a href="https://rcientificas.uninorte.edu.co/index.php/psicologia" class="table-link" target="_blank">Visitar →</a></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div id="tab-humanidades" class="tab-content">
+      <div class="table-wrap">
+        <table class="journals-table">
+          <thead><tr><th>Revista</th><th>Institución</th><th>Indexación / Categoría</th><th>Área</th><th>Enlace</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Historia Crítica</strong></td><td>Universidad de los Andes</td><td><span class="badge badge-gold">Homologada · Scopus / A&amp;HCI</span></td><td>Historia</td><td><a href="https://historiacritica.uniandes.edu.co" class="table-link" target="_blank">Visitar →</a></td></tr>
+            <tr><td><strong>Literatura: Teoría, Historia, Crítica</strong></td><td>Universidad Nacional de Colombia</td><td><span class="badge badge-gold">Homologada · Scopus</span></td><td>Literatura</td><td><a href="https://revistas.unal.edu.co/index.php/lthc" class="table-link" target="_blank">Visitar →</a></td></tr>
+            <tr><td><strong>Ideas y Valores</strong></td><td>Universidad Nacional de Colombia</td><td><span class="badge badge-gold">Homologada · Scopus / Redalyc</span></td><td>Filosofía</td><td><a href="https://revistas.unal.edu.co/index.php/idval" class="table-link" target="_blank">Visitar →</a></td></tr>
+            <tr><td><strong>Forma y Función</strong></td><td>Universidad Nacional de Colombia</td><td><span class="badge badge-gold">Homologada · Scopus</span></td><td>Lingüística</td><td><a href="https://revistas.unal.edu.co/index.php/formayfuncion" class="table-link" target="_blank">Visitar →</a></td></tr>
+            <tr><td><strong>Cuadernos de Música, Artes Visuales y Artes Escénicas</strong></td><td>Pontificia Universidad Javeriana</td><td><span class="badge badge-blue">Indexada · Latindex</span></td><td>Artes</td><td><a href="https://revistas.javeriana.edu.co/index.php/cma" class="table-link" target="_blank">Visitar →</a></td></tr>
+            <tr><td><strong>Signo y Pensamiento</strong></td><td>Pontificia Universidad Javeriana</td><td><span class="badge badge-gold">Homologada · Redalyc / Scopus</span></td><td>Comunicación</td><td><a href="https://revistas.javeriana.edu.co/index.php/signoypensamiento" class="table-link" target="_blank">Visitar →</a></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- NORTE DE SANTANDER TAB -->
+    <div id="tab-nortesantander" class="tab-content">
+      <!-- Regional header -->
+      <div style="background:linear-gradient(135deg,#0f2410,#1a3a1a);border-radius:12px;padding:1.5rem 2rem;margin-bottom:1.5rem;display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap;border:1px solid rgba(90,158,90,0.3);">
+        <span style="font-size:2.5rem;">🏔️</span>
+        <div style="flex:1;min-width:200px;">
+          <h3 style="font-family:'Playfair Display',serif;color:#f5e9c0;font-size:1.15rem;margin-bottom:0.3rem;">Revistas científicas del departamento de Norte de Santander</h3>
+          <p style="color:rgba(255,255,255,0.65);font-size:0.85rem;line-height:1.6;">Las universidades de Cúcuta, Ocaña y Pamplona han consolidado revistas especializadas con reconocimiento nacional e indexación en múltiples bases de datos. Publicar en ellas es una excelente puerta de entrada para investigadores de la región.</p>
+        </div>
+      </div>
+
+      <div class="table-wrap">
+        <table class="journals-table">
+          <thead><tr><th>Revista</th><th>Institución</th><th>Indexación / Categoría</th><th>Área</th><th>Enlace</th></tr></thead>
+          <tbody>
+            <tr>
+              <td><strong>Respuestas</strong><br><small style="color:var(--text-light);font-size:0.78rem;">Journal of Engineering Sciences</small></td>
+              <td>Universidad Francisco de Paula Santander (UFPS) · Cúcuta–Ocaña</td>
+              <td><span class="badge badge-blue">Indexada · Publindex C</span><br><span class="badge" style="background:rgba(46,107,46,0.15);color:#1a5c1a;margin-top:4px;display:inline-block;">Latindex · DOAJ · REDIB</span></td>
+              <td>Ingeniería y Tecnología</td>
+              <td><a href="https://revistas.ufps.edu.co/index.php/respuestas" class="table-link" target="_blank">Visitar →</a></td>
+            </tr>
+            <tr>
+              <td><strong>Ciencia y Cuidado</strong></td>
+              <td>Universidad Francisco de Paula Santander (UFPS) · Cúcuta</td>
+              <td><span class="badge badge-blue">Indexada · Publindex / LILACS</span><br><span class="badge" style="background:rgba(46,107,46,0.15);color:#1a5c1a;margin-top:4px;display:inline-block;">DOAJ · REDIB · CUIDEN</span></td>
+              <td>Ciencias de la Salud / Enfermería</td>
+              <td><a href="https://revistas.ufps.edu.co/index.php/cienciaycuidado" class="table-link" target="_blank">Visitar →</a></td>
+            </tr>
+            <tr>
+              <td><strong>Perspectivas</strong><br><small style="color:var(--text-light);font-size:0.78rem;">Journal of Social Sciences</small></td>
+              <td>Universidad Francisco de Paula Santander (UFPS) · Cúcuta</td>
+              <td><span class="badge badge-blue">Indexada · Publindex C</span><br><span class="badge" style="background:rgba(46,107,46,0.15);color:#1a5c1a;margin-top:4px;display:inline-block;">DOAJ · REDIB · LatinREV</span></td>
+              <td>Educación / Ciencias Sociales</td>
+              <td><a href="https://revistas.ufps.edu.co/index.php/perspectivas" class="table-link" target="_blank">Visitar →</a></td>
+            </tr>
+            <tr>
+              <td><strong>Mundo FESC</strong></td>
+              <td>Fundación de Estudios Superiores Comfanorte (FESC) · Cúcuta</td>
+              <td><span class="badge badge-blue">Indizada · Latindex · REDIB</span><br><span class="badge" style="background:rgba(46,107,46,0.15);color:#1a5c1a;margin-top:4px;display:inline-block;">DOAJ · LatinREV · BASE</span></td>
+              <td>Ing. / Tecnología / Ciencias Sociales</td>
+              <td><a href="https://www.fesc.edu.co/Revistas/OJS/index.php/mundofesc" class="table-link" target="_blank">Visitar →</a></td>
+            </tr>
+            <tr>
+              <td><strong>Reflexiones Contables</strong></td>
+              <td>Universidad Francisco de Paula Santander (UFPS) · Cúcuta</td>
+              <td><span class="badge badge-blue">Indexada · Publindex C</span><br><span class="badge" style="background:rgba(46,107,46,0.15);color:#1a5c1a;margin-top:4px;display:inline-block;">Latindex · REDIB</span></td>
+              <td>Contabilidad / Finanzas</td>
+              <td><a href="https://revistas.ufps.edu.co/index.php/reflexionescontables" class="table-link" target="_blank">Visitar →</a></td>
+            </tr>
+            <tr>
+              <td><strong>Ingenio</strong></td>
+              <td>Universidad Francisco de Paula Santander Ocaña (UFPSO)</td>
+              <td><span class="badge badge-blue">Indexada · Publindex C</span><br><span class="badge" style="background:rgba(46,107,46,0.15);color:#1a5c1a;margin-top:4px;display:inline-block;">Latindex · REDIB</span></td>
+              <td>Ingeniería / Ciencias Básicas</td>
+              <td><a href="https://revistas.ufpso.edu.co/index.php/rIngenio" class="table-link" target="_blank">Visitar →</a></td>
+            </tr>
+
+            <!-- SEPARADOR UNIPAMPLONA -->
+            <tr>
+              <td colspan="5" style="background:linear-gradient(90deg,rgba(46,107,46,0.12),rgba(46,107,46,0.04));padding:0.75rem 1.2rem;border-top:2px solid rgba(46,107,46,0.25);">
+                <div style="display:flex;align-items:center;gap:0.75rem;">
+                  <span style="font-size:1.2rem;">🏔️</span>
+                  <span style="font-family:'JetBrains Mono',monospace;font-size:0.72rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--steel);">Universidad de Pamplona — Pamplona, Norte de Santander</span>
+                </div>
+              </td>
+            </tr>
+
+            <tr>
+              <td><strong>BISTUA</strong><br><small style="color:var(--text-light);font-size:0.78rem;">Revista de la Facultad de Ciencias Básicas</small></td>
+              <td>Universidad de Pamplona</td>
+              <td><span class="badge badge-blue">Indexada · Publindex C</span><br><span class="badge" style="background:rgba(46,107,46,0.15);color:#1a5c1a;margin-top:4px;display:inline-block;">Latindex · Redalyc · EBSCO · Dialnet</span></td>
+              <td>Ciencias Naturales y Exactas (Biología, Física, Química, Matemáticas)</td>
+              <td><a href="https://ojs.unipamplona.edu.co/index.php/bistua" class="table-link" target="_blank">Visitar →</a></td>
+            </tr>
+            <tr>
+              <td><strong>@limentech</strong><br><small style="color:var(--text-light);font-size:0.78rem;">Ciencia y Tecnología Alimentaria</small></td>
+              <td>Universidad de Pamplona</td>
+              <td><span class="badge badge-blue">Indexada · Publindex C</span><br><span class="badge" style="background:rgba(46,107,46,0.15);color:#1a5c1a;margin-top:4px;display:inline-block;">Latindex · REDIB · EBSCO</span></td>
+              <td>Ingeniería de Alimentos / Agroindustria</td>
+              <td><a href="https://ojs.unipamplona.edu.co/index.php/alimen" class="table-link" target="_blank">Visitar →</a></td>
+            </tr>
+            <tr>
+              <td><strong>RCTA</strong><br><small style="color:var(--text-light);font-size:0.78rem;">Revista Colombiana de Tecnologías de Avanzada</small></td>
+              <td>Universidad de Pamplona</td>
+              <td><span class="badge badge-blue">Indexada · Publindex C</span><br><span class="badge" style="background:rgba(46,107,46,0.15);color:#1a5c1a;margin-top:4px;display:inline-block;">Latindex · REDIB · EBSCO · Dialnet</span></td>
+              <td>Ingeniería Eléctrica, Electrónica y Automatización</td>
+              <td><a href="https://ojs.unipamplona.edu.co/index.php/rcta" class="table-link" target="_blank">Visitar →</a></td>
+            </tr>
+            <tr>
+              <td><strong>Revista Ambiental: Agua, Aire y Suelo</strong><br><small style="color:var(--text-light);font-size:0.78rem;">RAAAS</small></td>
+              <td>Universidad de Pamplona</td>
+              <td><span class="badge badge-blue">Indexada · Publindex C</span><br><span class="badge" style="background:rgba(46,107,46,0.15);color:#1a5c1a;margin-top:4px;display:inline-block;">Latindex · REDIB · DOI / CrossRef</span></td>
+              <td>Ciencias Ambientales</td>
+              <td><a href="https://ojs.unipamplona.edu.co/index.php/aaas" class="table-link" target="_blank">Visitar →</a></td>
+            </tr>
+            <tr>
+              <td><strong>FACE</strong><br><small style="color:var(--text-light);font-size:0.78rem;">Facultad de Ciencias Económicas y Empresariales</small></td>
+              <td>Universidad de Pamplona</td>
+              <td><span class="badge badge-blue">Indexada · Publindex C</span><br><span class="badge" style="background:rgba(46,107,46,0.15);color:#1a5c1a;margin-top:4px;display:inline-block;">Latindex · REDIB · EBSCO · Dialnet</span></td>
+              <td>Negocios, Finanzas y Ciencias Económicas</td>
+              <td><a href="https://ojs.unipamplona.edu.co/index.php/face" class="table-link" target="_blank">Visitar →</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Note box -->
+      <div style="background:rgba(201,147,58,0.06);border:1px solid rgba(201,147,58,0.18);border-radius:8px;padding:1rem 1.5rem;margin-top:1.2rem;display:flex;gap:0.75rem;align-items:flex-start;">
+        <span style="font-size:1.2rem;flex-shrink:0;">ℹ️</span>
+        <p style="font-size:0.85rem;color:var(--text-mid);line-height:1.65;"><strong>Nota sobre categorías:</strong> Las categorías Publindex corresponden a la última convocatoria activa (910 de 2021). Minciencias se encuentra en proceso de revisión del modelo de clasificación. Se recomienda verificar el estado actualizado directamente en el <a href="https://minciencias.gov.co/glosario/p-ublindex" target="_blank" style="color:var(--gold);">portal Publindex</a> antes de someter un artículo para efectos de puntuación en CvLAC.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- QUOTE 2 -->
+<div class="quote-band" style="background:linear-gradient(135deg, #0f2410 0%, #1a3a1a 100%)">
+  <div class="quote-inner">
+    <span class="quote-mark">"</span>
+    <p class="quote-text">Un investigador sin perfil digital es invisible. Tu huella científica en línea es tan importante como tu investigación misma.</p>
+    <span class="quote-author">— Filosofía de la ciencia abierta</span>
+  </div>
+</div>
+
+<!-- IDENTIDAD -->
+<section id="identidad">
+  <div class="container">
+    <span class="section-label">04 — Identidad Investigativa</span>
+    <h2 class="section-title" style="color:var(--white)">Construye tu <em>identidad</em> científica</h2>
+    <p class="section-desc">Tu presencia digital académica comienza con perfiles verificados. CvLAC, ORCID y Google Scholar son las tres plataformas esenciales para cualquier investigador en Colombia y el mundo.</p>
+
+    <div class="identity-cards">
+
+      <div class="id-card fade-in">
+        <div class="id-card-header">
+          <div class="id-card-icon icon-amber">🇨🇴</div>
+          <div>
+            <h3>CvLAC — Hoja de vida científica</h3>
+          </div>
+        </div>
+        <p>El Currículum Vitae de Latinoamérica y el Caribe (CvLAC) es la plataforma oficial de Minciencias para registrar la producción académica y científica de investigadores colombianos.</p>
+        <div class="id-steps">
+          <h4>Cómo crear y actualizar tu CvLAC</h4>
+          <div class="id-step-item" data-n="1">Ingresa al portal GrupLAC/ScienTI de Minciencias y regístrate como investigador.</div>
+          <div class="id-step-item" data-n="2">Completa tu información básica: formación académica, experiencia laboral e institucional.</div>
+          <div class="id-step-item" data-n="3">Añade tus publicaciones: artículos, libros, capítulos, ponencias y patentes.</div>
+          <div class="id-step-item" data-n="4">Registra proyectos, distinciones, redes y actividades de apropiación social.</div>
+          <div class="id-step-item" data-n="5">Actualiza tu CvLAC mínimo cada año para mantener tu categoría como investigador.</div>
+        </div>
+        <div class="platform-btns">
+          <a href="https://scienti.minciencias.gov.co/cvlac/Login/pre_validaIdentidad.do" class="platform-btn" target="_blank">Ir a CvLAC →</a>
+        </div>
+      </div>
+
+      <div class="id-card fade-in">
+        <div class="id-card-header">
+          <div class="id-card-icon icon-blue">🌐</div>
+          <div>
+            <h3>ORCID — Identidad global única</h3>
+          </div>
+        </div>
+        <p>ORCID (Open Researcher and Contributor ID) es un identificador digital único y persistente que distingue a cada investigador a nivel mundial, independientemente de su nombre o afiliación.</p>
+        <div class="id-steps">
+          <h4>Cómo crear y gestionar tu ORCID</h4>
+          <div class="id-step-item" data-n="1">Ve a orcid.org y crea tu cuenta gratuita con tu correo institucional.</div>
+          <div class="id-step-item" data-n="2">Obtén tu identificador único (ej: 0000-0002-XXXX-XXXX) — ¡es de por vida!</div>
+          <div class="id-step-item" data-n="3">Vincula tus publicaciones desde PubMed, CrossRef, Scopus o importa tu BibTeX.</div>
+          <div class="id-step-item" data-n="4">Conecta ORCID con tu CvLAC, ResearchGate y repositorios institucionales.</div>
+          <div class="id-step-item" data-n="5">Usa tu ORCID en todos tus artículos, convocatorias y solicitudes de financiación.</div>
+        </div>
+        <div class="platform-btns">
+          <a href="https://orcid.org/register" class="platform-btn" target="_blank">Crear ORCID →</a>
+        </div>
+      </div>
+
+      <div class="id-card fade-in">
+        <div class="id-card-header">
+          <div class="id-card-icon icon-green">📊</div>
+          <div>
+            <h3>Google Scholar & Redes Académicas</h3>
+          </div>
+        </div>
+        <p>Google Scholar, ResearchGate y Academia.edu son vitales para aumentar la visibilidad de tus publicaciones, conocer quién te cita y conectar con investigadores afines.</p>
+        <div class="id-steps">
+          <h4>Cómo maximizar tu presencia digital</h4>
+          <div class="id-step-item" data-n="1">Crea tu perfil en Google Scholar y verifica que todas tus publicaciones estén listadas.</div>
+          <div class="id-step-item" data-n="2">Registra cuenta en ResearchGate y sube preprints o versiones aceptadas de tus artículos.</div>
+          <div class="id-step-item" data-n="3">Activa alertas de citación para saber cuándo y quién cita tu trabajo.</div>
+          <div class="id-step-item" data-n="4">Conecta con colegas, sigue líneas de investigación afines y comparte tu trabajo regularmente.</div>
+          <div class="id-step-item" data-n="5">Mantén coherencia en el nombre de autor en todas las plataformas para evitar duplicados.</div>
+        </div>
+        <div class="platform-btns">
+          <a href="https://scholar.google.com" class="platform-btn" target="_blank">Google Scholar →</a>
+          <a href="https://www.researchgate.net" class="platform-btn" target="_blank">ResearchGate →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- LIBROS -->
+<section id="libros" style="background:var(--cream)">
+  <div class="container">
+    <span class="section-label">05 — Libros Académicos</span>
+    <h2 class="section-title">Publicación de <em>libros</em> académicos</h2>
+    <p class="section-desc">Un libro académico es la forma más extensa y completa de contribuir al conocimiento. Su escritura, estructuración y publicación requieren una planificación rigurosa y una estrategia editorial clara.</p>
+
+    <div class="book-grid">
+      <div>
+        <div style="background:var(--white); border-radius:12px; padding:2rem; border:1px solid var(--parchment); margin-bottom:1.5rem">
+          <h3 style="font-family:'Playfair Display',serif; color:var(--navy); margin-bottom:1.2rem; font-size:1.2rem">📖 Estructura de un libro académico</h3>
+          <ul class="book-structure">
+            <li><span>Portada y portadilla</span>Título, autores, institución, año, ISBN</li>
+            <li><span>Prólogo / Prefacio</span>Contexto, justificación y agradecimientos</li>
+            <li><span>Tabla de contenido</span>Organización temática y numeración de capítulos</li>
+            <li><span>Introducción</span>Problema, objetivos, metodología y estructura</li>
+            <li><span>Capítulos</span>Desarrollo temático con referencias por capítulo</li>
+            <li><span>Conclusiones</span>Síntesis de hallazgos, límites y perspectivas</li>
+            <li><span>Bibliografía</span>Referencias completas en norma APA / Chicago</li>
+            <li><span>Índices</span>Temático, onomástico, de ilustraciones</li>
+          </ul>
+        </div>
+
+        <div class="compare-table">
+          <h3 style="font-family:'Playfair Display',serif; padding:1.2rem; background:var(--parchment); color:var(--navy); font-size:1.1rem">Artículo vs Capítulo vs Libro</h3>
+          <table>
+            <thead><tr><th>Aspecto</th><th>Artículo</th><th>Capítulo</th><th>Libro</th></tr></thead>
+            <tbody>
+              <tr><td>Extensión</td><td>5–30 pág.</td><td>15–40 pág.</td><td>100–500+ pág.</td></tr>
+              <tr><td>Alcance</td><td>Problema puntual</td><td>Tema específico</td><td>Campo amplio</td></tr>
+              <tr><td>Revisión</td><td>Par ciego</td><td>Editor obra</td><td>Editorial + pares</td></tr>
+              <tr><td>Identificador</td><td>DOI</td><td>ISBN capítulo</td><td>ISBN</td></tr>
+              <tr><td>Tiempo</td><td>6–24 meses</td><td>3–12 meses</td><td>1–3 años</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div>
+        <div class="editorials-list" style="margin-bottom:1.5rem">
+          <h3 style="font-family:'Playfair Display',serif; color:var(--navy); margin-bottom:1.2rem; font-size:1.2rem">🏛️ Editoriales universitarias en Colombia</h3>
+          <div class="editorial-item">
+            <span class="editorial-icon">📗</span>
+            <div>
+              <h4>Editorial Universidad Nacional de Colombia</h4>
+              <p>Una de las más prestigiosas del país. Publica en todas las áreas del conocimiento con distribución nacional e internacional.</p>
+            </div>
+          </div>
+          <div class="editorial-item">
+            <span class="editorial-icon">📘</span>
+            <div>
+              <h4>Editorial Universidad de Antioquia</h4>
+              <p>Reconocida por su rigurosidad académica y extensa colección en humanidades, ciencias sociales y ciencias naturales.</p>
+            </div>
+          </div>
+          <div class="editorial-item">
+            <span class="editorial-icon">📙</span>
+            <div>
+              <h4>Ediciones Uniandes</h4>
+              <p>Publica investigación de frontera en economía, ciencias políticas, derecho, ingeniería y humanidades. Alta proyección internacional.</p>
+            </div>
+          </div>
+          <div class="editorial-item">
+            <span class="editorial-icon">📕</span>
+            <div>
+              <h4>Pontificia Universidad Javeriana</h4>
+              <p>Editorial con énfasis en ciencias humanas, teología, derecho y ciencias de la salud. Miembro de la Red de Editoriales Universitarias.</p>
+            </div>
+          </div>
+          <div class="editorial-item">
+            <span class="editorial-icon">📓</span>
+            <div>
+              <h4>Universidad del Valle / UNIVALLE</h4>
+              <p>Relevante en el suroccidente colombiano. Fuerte en ciencias exactas, ingenierías y ciencias humanas.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="isbn-box">
+          <h3>🔑 ISBN y derechos de autor</h3>
+          <p>El <strong>ISBN</strong> (International Standard Book Number) es el identificador universal de libros. En Colombia lo otorga la <strong>Cámara Colombiana del Libro</strong> de forma gratuita para obras impresas y digitales.</p>
+          <p style="margin-top:0.75rem">Los <strong>derechos de autor</strong> en Colombia están regulados por la Ley 23 de 1982 y el Decreto 1360 de 1989. El registro se realiza ante la <strong>Dirección Nacional de Derecho de Autor (DNDA)</strong> del Ministerio del Interior.</p>
+          <div class="tag-row">
+            <span class="tag" style="background:rgba(201,147,58,0.2); color:var(--amber)">Licencias Creative Commons</span>
+            <span class="tag" style="background:rgba(255,255,255,0.1); color:rgba(255,255,255,0.8)">Acceso Abierto</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GRUPOS -->
+<section id="grupos">
+  <div class="container">
+    <span class="section-label">06 — Grupos de Investigación</span>
+    <h2 class="section-title">Grupos y semilleros de <em>investigación</em></h2>
+    <p class="section-desc">La investigación colaborativa multiplica el impacto de cada investigador. Los grupos y semilleros son el motor de la ciencia universitaria en Colombia.</p>
+
+    <div class="grupos-grid">
+      <div class="grupo-card teal fade-in">
+        <h3>¿Qué es un grupo de investigación?</h3>
+        <p>Es un conjunto de personas que comparten objetivos, recursos y metodologías para producir conocimiento en torno a una o varias líneas temáticas de forma sistemática y sostenida en el tiempo.</p>
+        <div style="margin-top:1rem; padding-top:1rem; border-top:1px solid rgba(255,255,255,0.1)">
+          <p style="font-family:'JetBrains Mono',monospace; font-size:0.7rem; opacity:0.6; text-transform:uppercase; letter-spacing:0.1em">Para ser reconocido necesitas:</p>
+          <ul style="margin-top:0.5rem">
+            <li>Mínimo 2 investigadores reconocidos</li>
+            <li>Al menos una línea de investigación</li>
+            <li>Producción académica acreditada</li>
+            <li>Registro activo en GrupLAC</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="grupo-card gold fade-in">
+        <h3>Cómo registrar un grupo en Colombia</h3>
+        <p>El registro se realiza a través de la plataforma <strong>ScienTI de Minciencias</strong>. El proceso incluye:</p>
+        <ul>
+          <li>Registro del líder e integrantes en CvLAC</li>
+          <li>Creación del GrupLAC con datos del grupo</li>
+          <li>Definición de líneas de investigación</li>
+          <li>Vinculación de producción académica</li>
+          <li>Presentación a convocatoria de reconocimiento</li>
+        </ul>
+      </div>
+
+      <div class="grupo-card sage fade-in">
+        <h3>Semilleros de investigación</h3>
+        <p>Son espacios de iniciación investigativa para estudiantes universitarios. Constituyen el primer escalón en la formación de nuevos investigadores y la renovación de los grupos.</p>
+        <ul>
+          <li>Mentored por investigadores del grupo</li>
+          <li>Participación en eventos como REDCOLSI</li>
+          <li>Producción de ponencias y artículos</li>
+          <li>Pasarela hacia jóvenes investigadores</li>
+        </ul>
+      </div>
+
+      <div class="grupo-card terracotta fade-in">
+        <h3>Líneas de investigación</h3>
+        <p>Son ejes temáticos que orientan la producción del grupo. Deben ser coherentes, pertinentes y viables en el contexto de las capacidades del grupo y las necesidades del entorno.</p>
+        <ul>
+          <li>Deben estar claramente definidas y documentadas</li>
+          <li>Permiten focalizar recursos y talentos</li>
+          <li>Son el marco para proyectos y publicaciones</li>
+          <li>Pueden articularse con redes internacionales</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="minciencias-box">
+      <div class="minciencias-icon">🏛️</div>
+      <div style="flex:1">
+        <h3>Minciencias y GrupLAC: el sistema nacional de CTI</h3>
+        <p><strong>Minciencias</strong> (Ministerio de Ciencia, Tecnología e Innovación) es el ente rector del Sistema Nacional de Ciencia, Tecnología e Innovación (SNCTI) de Colombia. A través de convocatorias periódicas, reconoce y categoriza grupos de investigación según su producción: <strong>A1, A, B, C o Reconocido</strong>.</p>
+        <p><strong>GrupLAC</strong> es el sistema de información de grupos de investigación dentro de la plataforma ScienTI. Es la vitrina institucional del grupo ante convocatorias, alianzas y cooperación internacional.</p>
+        <div class="tag-row">
+          <span class="tag tag-gold">Convocatorias de financiación</span>
+          <span class="tag tag-navy">Reconocimiento y categorización</span>
+          <span class="tag tag-blue">Jóvenes investigadores</span>
+          <span class="tag tag-navy">Pasantías internacionales</span>
+        </div>
+        <div style="margin-top:1.5rem">
+          <a href="https://minciencias.gov.co" class="btn-primary" target="_blank" style="font-size:0.75rem; padding:0.7rem 1.5rem">Ir a Minciencias →</a>
+          <a href="https://scienti.minciencias.gov.co/gruplac" class="btn-outline" target="_blank" style="font-size:0.75rem; padding:0.7rem 1.5rem; margin-left:0.75rem; color:var(--navy); border-color:var(--parchment)">Ir a GrupLAC →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VISIBILIDAD -->
+<section id="visibilidad" style="background:var(--parchment)">
+  <div class="container">
+    <span class="section-label">07 — Impacto Académico</span>
+    <h2 class="section-title">Estrategias para aumentar tu <em>visibilidad</em> científica</h2>
+    <p class="section-desc">Publicar es el primer paso. La verdadera influencia científica se construye con una estrategia sostenida de difusión, colaboración y presencia en los espacios donde vive la comunidad académica.</p>
+
+    <div class="visibility-grid">
+      <div class="vis-card c1 fade-in">
+        <div class="vis-icon">🎯</div>
+        <h3>Publica en acceso abierto</h3>
+        <p>Los artículos en acceso abierto (Open Access) reciben hasta 3 veces más citaciones. Publica en revistas OA o deposita preprints en repositorios como Zenodo, arXiv o el repositorio de tu institución.</p>
+      </div>
+      <div class="vis-card c2 fade-in">
+        <div class="vis-icon">🔗</div>
+        <h3>Vincula todos tus perfiles</h3>
+        <p>Conecta ORCID con CvLAC, Scopus Author ID, Web of Science ResearcherID y Google Scholar. La coherencia entre plataformas evita duplicados y aumenta tu factor H calculado correctamente.</p>
+      </div>
+      <div class="vis-card c3 fade-in">
+        <div class="vis-icon">🤝</div>
+        <h3>Colabora interdisciplinarmente</h3>
+        <p>Los artículos con coautorías internacionales tienen mayor probabilidad de ser citados. Participa en redes como CLACSO, ALI o RedNIE, y asiste a congresos de alto perfil en tu área.</p>
+      </div>
+      <div class="vis-card c4 fade-in">
+        <div class="vis-icon">📣</div>
+        <h3>Divulga en redes académicas</h3>
+        <p>Comparte resúmenes en LinkedIn y Twitter/X académico. Usa ResearchGate para subir versiones autorizadas. Considera hacer hilos de Twitter explicando tus hallazgos para audiencias amplias.</p>
+      </div>
+      <div class="vis-card c1 fade-in">
+        <div class="vis-icon">📐</div>
+        <h3>Optimiza tus palabras clave</h3>
+        <p>Usa términos del tesauro de tu disciplina, DeCS (en salud) o descriptores MeSH/ERIC. Las palabras clave bien elegidas aumentan la recuperabilidad de tu artículo en bases de datos internacionales.</p>
+      </div>
+      <div class="vis-card c2 fade-in">
+        <div class="vis-icon">📈</div>
+        <h3>Monitorea tu factor H e índice i10</h3>
+        <p>El <strong>factor H</strong> mide la relación entre número de publicaciones e impacto de citaciones. Google Scholar, Scopus y WoS calculan métricas distintas. Actualízalas regularmente para convocatorias.</p>
+      </div>
+      <div class="vis-card c3 fade-in">
+        <div class="vis-icon">🎤</div>
+        <h3>Participa en eventos científicos</h3>
+        <p>Ponencias en congresos, conferencias y simposios nacionales e internacionales posicionan tu nombre en la comunidad y generan oportunidades de colaboración, coautoría y visibilidad institucional.</p>
+      </div>
+      <div class="vis-card c4 fade-in">
+        <div class="vis-icon">🌱</div>
+        <h3>Mentora a otros investigadores</h3>
+        <p>Dirigir trabajos de grado, semilleros y jóvenes investigadores no solo contribuye a la comunidad sino que amplía tu red académica y genera coautorías con nuevas generaciones de investigadores.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIOS -->
+<section id="testimonios">
+  <div class="container">
+    <span class="section-label">08 — Experiencias</span>
+    <h2 class="section-title">Voces de la <em>comunidad</em> investigadora</h2>
+    <p class="section-desc">Investigadores colombianos comparten sus experiencias en el camino hacia la publicación científica.</p>
+
+    <div class="testimonials-grid">
+      <div class="testimonial fade-in">
+        <p>Mi primer artículo tardó dos años en publicarse. Fue rechazado tres veces. Hoy ese artículo tiene más de 80 citaciones. La persistencia es la habilidad más importante de cualquier investigador.</p>
+        <div class="testimonial-author">
+          <div class="author-avatar av1">👩‍🔬</div>
+          <div>
+            <div class="author-name">Dra. Carolina Restrepo</div>
+            <div class="author-role">Investigadora Senior · Universidad de Antioquia</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial fade-in">
+        <p>Crear mi CvLAC y ORCID fue transformador. De repente, investigadores de España y México me contactaron para colaborar. La visibilidad digital multiplicó mis oportunidades de financiación y movilidad.</p>
+        <div class="testimonial-author">
+          <div class="author-avatar av2">👨‍💻</div>
+          <div>
+            <div class="author-name">Mg. Andrés Mora</div>
+            <div class="author-role">Docente-Investigador · Universidad Distrital</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial fade-in">
+        <p>Siendo docente de pregrado pensé que publicar era solo para los de doctorado. Equivocada. Con el acompañamiento correcto, logré publicar en una revista Scopus durante mi maestría. La clave fue empezar.</p>
+        <div class="testimonial-author">
+          <div class="author-avatar av3">👩‍🏫</div>
+          <div>
+            <div class="author-name">Esp. Luisa Fernanda Castro</div>
+            <div class="author-role">Docente · Institución Universitaria del Pacífico</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MOTIVATIONAL CLOSING -->
+    <div style="margin-top:4rem; text-align:center; padding:3rem; background:linear-gradient(135deg, var(--cream) 0%, var(--parchment) 100%); border-radius:20px; border:1px solid rgba(201,147,58,0.2)">
+      <div style="font-size:3rem; margin-bottom:1rem">✨</div>
+      <h3 style="font-family:'Playfair Display',serif; font-size:clamp(1.5rem,3vw,2.2rem); color:var(--navy); margin-bottom:1rem">Tu próxima publicación está a un paso</h3>
+      <p style="color:var(--text-mid); max-width:600px; margin:0 auto 2rem; line-height:1.8; font-size:1.05rem">No existe investigador que haya nacido sabiendo publicar. Cada experto fue alguna vez un principiante con dudas. Lo que los diferencia es que <strong>comenzaron</strong>.</p>
+      <div style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap">
+        <a href="https://scienti.minciencias.gov.co/cvlac/Login/pre_validaIdentidad.do" class="btn-primary" target="_blank">Crear mi CvLAC →</a>
+        <a href="https://orcid.org/register" class="btn-primary" target="_blank" style="background:var(--steel)">Registrar ORCID →</a>
+        <a href="https://minciencias.gov.co/convocatorias" class="btn-outline" target="_blank" style="color:var(--navy); border-color:var(--parchment)">Ver convocatorias →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <h3>I.E. Julio Pérez Ferrero · Ciencia & Escritura</h3>
+      <p>Recurso educativo institucional para docentes, investigadores y estudiantes universitarios colombianos que desean iniciar o fortalecer su trayectoria en la publicación académica y científica.</p>
+      <div style="display:flex; gap:0.75rem; flex-wrap:wrap">
+        <a href="https://minciencias.gov.co" class="platform-btn" target="_blank" style="color:var(--amber)">Minciencias</a>
+        <a href="https://orcid.org" class="platform-btn" target="_blank" style="color:var(--amber)">ORCID</a>
+        <a href="https://scienti.minciencias.gov.co" class="platform-btn" target="_blank" style="color:var(--amber)">ScienTI</a>
+      </div>
+    </div>
+
+    <div class="footer-col">
+      <h4>Plataformas</h4>
+      <ul>
+        <li><a href="https://scienti.minciencias.gov.co/cvlac" target="_blank">CvLAC</a></li>
+        <li><a href="https://scienti.minciencias.gov.co/gruplac" target="_blank">GrupLAC</a></li>
+        <li><a href="https://orcid.org" target="_blank">ORCID</a></li>
+        <li><a href="https://scholar.google.com" target="_blank">Google Scholar</a></li>
+        <li><a href="https://www.researchgate.net" target="_blank">ResearchGate</a></li>
+        <li><a href="https://www.scopus.com" target="_blank">Scopus</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Recursos</h4>
+      <ul>
+        <li><a href="https://www.redalyc.org" target="_blank">Redalyc</a></li>
+        <li><a href="https://scielo.org" target="_blank">SciELO Colombia</a></li>
+        <li><a href="https://www.doaj.org" target="_blank">DOAJ (Open Access)</a></li>
+        <li><a href="https://zenodo.org" target="_blank">Zenodo</a></li>
+        <li><a href="https://www.latindex.unam.mx" target="_blank">Latindex</a></li>
+        <li><a href="https://publons.com" target="_blank">Publons (WoS)</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Normativas</h4>
+      <ul>
+        <li><a href="https://www.camlibro.com.co" target="_blank">ISBN Colombia</a></li>
+        <li><a href="https://derechodeautor.gov.co" target="_blank">DNDA</a></li>
+        <li><a href="https://publicationethics.org" target="_blank">COPE - Ética</a></li>
+        <li><a href="https://apastyle.apa.org" target="_blank">Normas APA</a></li>
+        <li><a href="https://minciencias.gov.co/convocatorias" target="_blank">Convocatorias</a></li>
+        <li><a href="https://redcolsi.org" target="_blank">REDCOLSI</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>I.E. Julio Pérez Ferrero · Recurso educativo de acceso libre para la comunidad académica colombiana · Cúcuta, Norte de Santander · 2025 🇨🇴</p>
+  </div>
+</footer>
+
+<script>
+  // Mobile menu
+  function toggleMenu() {
+    const m = document.getElementById('mobileMenu');
+    m.classList.toggle('open');
+  }
+
+  // Tabs
+  function showTab(id) {
+    document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+    document.getElementById('tab-' + id).classList.add('active');
+    event.target.classList.add('active');
+  }
+
+  // Fade in on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  // Smooth close mobile menu on resize
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 768) {
+      document.getElementById('mobileMenu').classList.remove('open');
+    }
+  });
+</script>
+</body>
+</html>
